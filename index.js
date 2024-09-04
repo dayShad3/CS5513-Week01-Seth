@@ -8,6 +8,21 @@ let myserver = myhttp.createServer(
   function(myrequest, myresponse) {
     console.log(myrequest.url);
 
+    let myresponsetext;
+      switch (myrequest.url){
+        case "/42":
+          myresponsetext = "The answer to life, the universe, and everything.";
+          break;
+        case "/ahh":
+          myresponsetext = "Don't Panic!";
+          break;
+        case "/go":
+          myresponsetext = "Don't forget to bring a towel!";
+          break;
+        default:
+          myresponsetext = "Sorry for the inconvenience.";
+          break;
+      }
     myresponse.writeHead(
       200, 
       {
@@ -15,7 +30,7 @@ let myserver = myhttp.createServer(
       }
     );
     myresponse.end(
-      "Greetings from the server!"
+      myresponsetext
     );
   }
 );
